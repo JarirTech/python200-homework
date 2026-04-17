@@ -52,7 +52,8 @@ filtred_df["sex"] = filtred_df["sex"].map({"F":0, "M":1})
 corr_original = df['absences'].corr(df['G3'])
 corr_filtred_df = filtred_df['absences'].corr(filtred_df['G3'])
 print('correlation of original df is: ', corr_original)
-print('correlation of filtred df is: ', filtred_df)
+#print('correlation of filtred df is: ', filtred_df)
+print('correlation of filtered df is: ', corr_filtred_df)
 # students with G3=0 have many absences 
 
 #----------------------------------------------------------------------------------
