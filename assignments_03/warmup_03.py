@@ -42,7 +42,8 @@ print('---------Preprocessing Question 2----------------------------------------
 
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.fit_transform(X_test)
+X_test_scaled = scaler.transform(X_test)
+#X_test_scaled = scaler.fit_transform(X_test)
 # Print the mean of each column in X_train_scaled -- 
 print("Means of scaled X_train columns:")
 print(X_train_scaled.mean(axis=0))
@@ -146,11 +147,26 @@ print(classification_report(y_test, tree_pred))
 print('-----Logistic Regression Question 1------------------------------------------------')
 #Train three logistic regression models on the scaled Iris data, identical in every way except for the C 
 # parameter: C=0.01, C=1.0, and C=100
+# for c in [0.01, 1.0, 100]:
+#     log_reg = LogisticRegression(
+#         C=c,
+#         max_iter=1000,
+#         solver="lbfgs"
+#     )
+
+#     log_reg.fit(X_train_scaled, y_train)
+
+#     coef_size = np.abs(log_reg.coef_).sum()
+
+#     print(f"C={c}, Total coefficient size={coef_size:.4f}")
+
+
 for c in [0.01, 1.0, 100]:
     log_reg = LogisticRegression(
         C=c,
         max_iter=1000,
-        solver="lbfgs"
+        solver="liblinear",
+        multi_class="ovr"
     )
 
     log_reg.fit(X_train_scaled, y_train)
@@ -158,8 +174,10 @@ for c in [0.01, 1.0, 100]:
     coef_size = np.abs(log_reg.coef_).sum()
 
     print(f"C={c}, Total coefficient size={coef_size:.4f}")
-       
-# As C increases, the total coefficient magnitude becomes larger.
+
+
+# As C increases, coefficient size becomes larger.
+# Larger C means weaker regularization.
 
 #-------------------------------------------------------------------------------
 #------PCA -------------------------------------------
