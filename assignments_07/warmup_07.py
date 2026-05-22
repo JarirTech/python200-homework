@@ -35,26 +35,20 @@ def celsius_to_fahrenheit(celsius: float) -> str:
 
  #JSON schema dictionary that describes this function to an LLM
 
-celsius_to_fahrenheit_schema ={
-    
-        'type': 'function',
-        'function': {
-            'name': 'celsius_to_fahrenheit',
-            'description': 'Converts a temperature from Celsius to Fahrenheit.',
-            'parameters': {
-                'type': 'object',
-                'properties': {
-                     "celsius": {
-                    "type": "number",
-                    "description": "Temperature in Celsius"
-                }
-            },
-
-            'required': ["celsius"],
-            },
+celsius_to_fahrenheit_schema = {
+    "name": "celsius_to_fahrenheit",
+    "description": "Converts a temperature from Celsius to Fahrenheit.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "celsius": {
+                "type": "number",
+                "description": "Temperature in Celsius"
+            }
         },
+        "required": ["celsius"]
     }
-
+}
 print('Tools list defined with one tool: celsius_to_fahrenheit')
 
 #call the function directly with 0, 100, and -40 and print each result.

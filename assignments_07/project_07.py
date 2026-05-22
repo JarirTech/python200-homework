@@ -16,15 +16,15 @@ from smolagents import tool, CodeAgent, OpenAIServerModel
 df = None
 
 # Local merged dataset
-DATA_PATH = r"C:\Users\bjari\OneDrive\Desktop\python200-homework\assignments_01\outputs\merged_happiness.csv"
+DATA_PATH = "assignments_01\outputs\merged_happiness.csv"
 
 # Optional fallback folder
-FALLBACK_DIR = r"C:\Users\bjari\OneDrive\Desktop\python-200\assignments\resources\happiness_project"
+FALLBACK_DIR = "assignments\resources\happiness_project"
 
 
-# =========================
-# HELPER FUNCTION
-# =========================
+# ================================================================
+# cleaning df
+
 def clean_columns(dataframe):
     """
     Normalize column names.
@@ -274,9 +274,9 @@ def get_best_happiness_year() -> dict:
     }
 
 
-# =========================
+# ===================================================================================
 # TOOL 6: PLOT
-# =========================
+
 @tool
 def plot_happiness_by_region() -> dict:
     """
@@ -411,22 +411,6 @@ queries = [
 
     "Show correlation between freedom_to_make_life_choices and happiness_score."
 ]
-#====================================================================
-
-# Task 5: Reflection
-# 
-#
-# 1. The agent showed statistical significance by using the p-value.
-#    It marked the result as significant when the p-value was below 0.05.
-#    Yes, it used the p-value correctly.
-#
-# 2. I was surprised that the agent could automatically create plots
-#    and answer custom questions using the tools without extra coding.
-#
-# 3. One useful additional tool would be a filtering tool.
-#    It could filter data by region or year and help answer questions
-#    like "Which region had the highest happiness score in 2021?"
-
 # ==========================================================
 #-----Running the Project----
 # MAIN
@@ -455,3 +439,20 @@ if __name__ == "__main__":
         except Exception as e:
 
             print("ERROR:", str(e))
+
+#====================================================================
+
+# Task 5: Reflection
+# 
+#
+# 1. The agent showed statistical significance by using the p-value.
+#    It marked the result as significant when the p-value was below 0.05.
+#    Yes, it used the p-value correctly.
+#
+# 2. I was surprised that the agent could automatically create plots
+#    and answer custom questions using the tools without extra coding.
+#
+# 3. One useful additional tool would be a filtering tool.
+#    It could filter data by region or year and help answer questions
+#    like "Which region had the highest happiness score in 2021?"
+
